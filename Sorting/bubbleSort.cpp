@@ -32,7 +32,7 @@ void bubblesort(int arr[] , int size)
             }
             
         }
-        
+        counter++;
     }
     
     
