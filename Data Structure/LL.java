@@ -138,6 +138,32 @@ private int size;
         return newhead;
     }
     
+        public String lastNthNodeDelete(Node head , int n)
+    {
+        if (head.next == null)
+        {
+            return null;
+        }
+        Node first = head;
+        int size=0;
+        while (first != null)
+        {
+            first=first.next;
+            size++;
+        }
+
+        int i=1;
+        Node second = head;
+        while (i != (size-n))
+        {
+            second = second.next;
+            i++;
+        }
+        String val = second.next.data;
+        second.next = second.next.next;
+
+        return val;
+    }
     public static void main(String[] args) {
         LL list = new LL();
 
