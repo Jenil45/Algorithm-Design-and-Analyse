@@ -71,6 +71,38 @@ private int size;
         System.out.println("NULL");
     }
     
+    // delete first
+    public void deleteFirst()
+    {
+        if (head == null)
+        {
+            System.out.println("List is empty");
+            return;
+        }
+        size--;
+        head=head.next;
+    }
+
+    // delete last
+    public void deleteLast()
+    {
+        if (head == null)
+        {
+            System.out.println("List is mepty");
+            return;
+        }
+        Node ptr = head;
+        Node ptr1 = head.next;
+        while (ptr1.next != null)
+        {
+            ptr = ptr.next;
+            ptr1 = ptr1.next;
+        }
+        size--;
+        ptr.next = null;
+
+    }
+    
     public static void main(String[] args) {
         LL list = new LL();
 
