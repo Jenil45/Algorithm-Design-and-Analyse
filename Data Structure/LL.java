@@ -164,6 +164,43 @@ private int size;
 
         return val;
     }
+    // palindrome linked list or not
+
+    public Node findMiddle(Node head)
+    {
+        Node hare = head;
+        Node turtle = head;
+
+        while (hare.next != null && hare.next.next != null)
+        {
+            hare = hare.next.next;
+            turtle = turtle.next;
+        }
+        return turtle;
+    }
+    public boolean palindrome(Node head)
+    {
+        if (head == null || head.next==null)
+        {
+            return true;
+        }
+
+        Node middle = findMiddle(head);
+        Node secondLLStart = recursivereverse(middle.next);
+        Node firstLLStart = head;
+        while (secondLLStart != null)
+        {
+            if (firstLLStart.data != secondLLStart.data)
+            {
+                return false;
+            }
+            firstLLStart = firstLLStart.next;
+            secondLLStart = secondLLStart.next;
+
+        }
+        return true;
+
+    }
     public static void main(String[] args) {
         LL list = new LL();
 
