@@ -18,6 +18,43 @@ private int size;
             this.next = null;
         }
     }
+    // add first
+    public void addFirst(String data)
+    {
+        Node newNode = new Node(data);
+        if (head == null)
+        {
+            head = newNode;
+            head.next = null;
+            size++;
+            return;
+        }
+        size++;
+        newNode.next = head;
+        head = newNode;
+    }
+
+    // add last
+    public void addLast(String data)
+    {
+        Node newNode = new Node(data);
+        Node ptr = head;
+        if (head == null)
+        {
+            head = newNode;
+            head.next = null;
+            size++;
+            return;
+        }
+        while (ptr.next != null)
+        {
+            ptr = ptr.next;
+        }
+        size++;
+        ptr.next = newNode;
+        newNode.next = null;
+    }
+
     public static void main(String[] args) {
         LL list = new LL();
 
