@@ -54,11 +54,25 @@ private int size;
         ptr.next = newNode;
         newNode.next = null;
     }
-
+    
+    // print linkedlist
+    public void printLL()
+    {
+        if (head == null)
+        {
+            System.out.println("list is empty");
+        }
+        Node ptr = head;
+        while (ptr != null)
+        {
+            System.out.print(ptr.data + "->");
+            ptr=ptr.next;
+        }
+        System.out.println("NULL");
+    }
+    
     public static void main(String[] args) {
         LL list = new LL();
-
-
 
         list.addLast("5");
         list.addLast("4");
