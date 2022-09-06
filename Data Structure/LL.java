@@ -103,6 +103,41 @@ private int size;
 
     }
     
+        // Reverse linked list
+    public void iterateReverse()
+    {
+        if (head == null || head.next==null)
+        {
+            return;
+        }
+        Node prev = head;
+        Node currNode = head.next;
+        while (currNode != null)
+        {
+            Node nextNode = currNode.next;
+            currNode.next = prev;
+
+            // update
+            prev = currNode;
+            currNode = nextNode;
+        }
+        head.next = null;
+        head=prev;
+    }
+
+    public Node recursivereverse(Node head)
+    {
+        if (head == null || head.next==null)
+        {
+            System.out.println("list is empty");
+            return head;
+        }
+        Node newhead = recursivereverse(head.next);
+        head.next.next=head;
+        head.next=null;
+        return newhead;
+    }
+    
     public static void main(String[] args) {
         LL list = new LL();
 
