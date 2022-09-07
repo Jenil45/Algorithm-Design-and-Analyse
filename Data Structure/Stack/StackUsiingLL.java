@@ -12,6 +12,53 @@ class Node1
     }
 }
 
+class StackLL
+{
+    public Node1 head;
+    public boolean isEmpty()
+    {
+        if (head==null)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void push(int data)
+    {
+        Node1 newNode = new Node1(data);
+        if (isEmpty())
+        {
+            head=newNode;
+            return;
+        }
+        newNode.next = head;
+        head = newNode;
+    }
+
+    public int pop()
+    {
+        if (isEmpty())
+        {
+            System.out.println("Queue is empty");
+            return  -1;
+        }
+        int pop = head.data;
+        head = head.next;
+        return pop;
+    }
+
+    public int peek()
+    {
+        if (isEmpty())
+        {
+            System.out.println("Queue is empty");
+            return  -1;
+        }
+        return head.data;
+    }
+}
+
 public class StackUsiingLL {
     public static void main(String[] args) {
         StackLL s1 = new StackLL();
