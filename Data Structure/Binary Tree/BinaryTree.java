@@ -150,6 +150,47 @@ public class BinaryTree {
         return leftSum+rightSum+root.data;
     }
   
+  // height of a tree
+    public static int heightOfTree(Node root)
+    {
+        if (root == null)
+        {
+            return 0;
+        }
+        // we will check maximum height from left and subtree total height
+        int leftHeight = heightOfTree(root.left);
+        int rightHeight = heightOfTree(root.right);
+
+        int myHeight = Math.max(leftHeight , rightHeight) + 1;
+        return myHeight;
+    }
+
+    // diameter of a tree
+    //Number of nodes in the longest path between any 2 nodes
+
+    /*
+        Approach 1 : O(n^2)
+        diam1 :- Left subtree max diameter
+        diam2 :- Right subtree max diameter
+        diam3 :- Left subtree Height + Right subtree Height + 1
+
+        Max(diam1 , diam 2 , diam3) is answer
+     */
+    public static int diameterOfTree(Node root)
+    {
+        if (root == null)
+        {
+            return 0;
+        }
+
+        int leftSubMaxDiam = diameterOfTree(root.left);
+        int rightSubMaxDiam = diameterOfTree(root.right);
+        int diam3 = heightOfTree(root.left)+heightOfTree(root.right)+1;
+
+        return Math.max(Math.max(leftSubMaxDiam , rightSubMaxDiam) , diam3);
+    }
+
+  
       public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6 ,-1 ,-1};
         System.out.println("Binary Tree : ");
