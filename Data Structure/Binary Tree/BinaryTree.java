@@ -229,6 +229,40 @@ public class BinaryTree {
         return myInfo;
     }
   
+  public static boolean isIdentical(Node root , Node root1)
+    {
+        if (root==null && root1==null)
+        {
+            return true;
+        }
+        if (root==null || root1==null)
+        {
+            return false;
+        }
+        if (root.data == root1.data)
+        {
+            return isIdentical(root.left , root1.left) && isIdentical(root.right , root1.right);
+        }
+        return false;
+    }
+    public static boolean isSubtreeExist(Node root , Node root1) {
+        if (root1 == null)
+        {
+            return true;
+        }
+
+        if (root == null)
+        {
+            return false;
+        }
+        if(isIdentical(root , root1))
+        {
+            return true;
+        }
+
+        return isSubtreeExist(root.left , root1) || isSubtreeExist(root.right , root1);
+    }
+
       public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6 ,-1 ,-1};
         System.out.println("Binary Tree : ");
