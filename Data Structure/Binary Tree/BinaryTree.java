@@ -6,6 +6,44 @@ import java.util.*;
 
 public class BinaryTree {
   
+      static class Node
+    {
+        int data;
+        Node left;
+        Node right;
+
+        Node(int data)
+        {
+            this.data = data;
+            this.left = null;
+            this.right = null;
+        }
+    }
+
+    // build a binary tree using a preorder
+    static  class BuildBinaryTree
+    {
+        int idx = -1;
+
+        public Node buildTree(int nodes[] )
+        {
+            // index to iterate over a nodes array
+            idx++;
+            if (nodes[idx] == -1)
+            {
+                return null;
+            }
+
+            // every iteration we create a new node with the data of that node index value
+            Node newNode = new Node(nodes[idx]);
+            // after every root creation we store pur new node to left subtree
+            newNode.left = buildTree(nodes);
+            // then we add it to right subtree
+            newNode.right = buildTree(nodes);
+            // at the last we return a newNode which is root
+            return newNode;
+        }
+
   
       public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6 ,-1 ,-1};
