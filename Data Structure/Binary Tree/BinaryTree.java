@@ -189,7 +189,45 @@ public class BinaryTree {
 
         return Math.max(Math.max(leftSubMaxDiam , rightSubMaxDiam) , diam3);
     }
+    
+  /*
+        Approach 2 : O(n) we use diameter and height function or approach at a time
+        we make 2 structure
+        (i) For height
+        (ii) For diameter
 
+     */
+    static class TreeInfo
+    {
+        int height;
+        int diameter;
+
+        TreeInfo(int height , int diameter)
+        {
+            this.height = height;
+            this.diameter = diameter;
+        }
+    }
+
+    public static TreeInfo diameter2(Node root)
+    {
+        if (root == null)
+        {
+            return new TreeInfo(0,0);
+        }
+        TreeInfo left = diameter2(root.left);
+        TreeInfo right = diameter2(root.right);
+
+        int myHeight = Math.max(left.height , left.diameter) + 1;
+        int diam1 = left.diameter;
+        int diam2 = right.diameter;
+        int diam3 = left.height + right.height + 1;
+
+        int myDiam = Math.max(Math.max(diam1 , diam2) , diam3);
+
+        TreeInfo myInfo = new TreeInfo(myHeight , myDiam);
+        return myInfo;
+    }
   
       public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6 ,-1 ,-1};
