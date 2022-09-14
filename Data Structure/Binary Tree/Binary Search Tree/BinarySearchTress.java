@@ -207,3 +207,36 @@ public class BinarySearchTress {
         }
         System.out.println("");
     }
+    
+    
+        public static void main(String[] args) {
+
+        int nodeArr[]  = {45 , 93 , 7 , 18 , 49 , 100 , 33 , 6 , 264 , 208 , 118 , 72 , 44};
+        NodeBST root = null;
+
+        for (int i = 0; i < nodeArr.length; i++) {
+            root = insert(root , nodeArr[i]);
+        }
+        inorderBST(root);
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nEnter the number that you want to search : ");
+        int key = sc.nextInt();
+
+        if (searchBST(root ,key))
+        {
+            System.out.println("Element Found");
+        }
+        else
+        {
+            System.out.println("Element not found");
+        }
+//        System.out.print("Enter the number that you want to delete : ");
+//        int delete = sc.nextInt();
+//
+//        root = deleteNode(root , delete);
+//        inorderBST(root);
+
+        printRange(45 , 200 ,root);
+        leafPath(root , new ArrayList<>());
+    }
+}
