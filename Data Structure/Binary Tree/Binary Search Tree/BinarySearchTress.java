@@ -152,3 +152,58 @@ public class BinarySearchTress {
         }
         return root;
     }
+
+    // print number which are in range
+    public static void printRange(int x , int y , NodeBST root)
+    {
+        if (root==null)
+        {
+            return;
+        }
+        if (root.data >= x && root.data <= y )
+        {
+            printRange(x , y , root.left);
+            System.out.println("The element between " + x + " and " + y + " is " + root.data);
+            printRange(x , y , root.right);
+        }
+        else if (y <= root.data)
+        {
+            printRange(x , y , root.left);
+        }
+        else
+        {
+            printRange(x , y , root.right);
+        }
+    }
+
+    // printing all root to leaf paths
+    // we use arraylist to store all paths of it
+    public static void leafPath(NodeBST root , ArrayList<Integer> path)
+    {
+        if (root==null)
+        {
+            return;
+        }
+        path.add(root.data);
+
+        if (root.left == null && root.right == null)
+        {
+            printPath(path);
+        }
+        else
+        {
+            leafPath(root.left , path);
+            leafPath(root.right , path);
+        }
+
+        path.remove(path.size()-1);
+    }
+
+    public static void printPath(ArrayList<Integer> path)
+    {
+        System.out.print("Path i is : ");
+        for (int i = 0; i < path.size(); i++) {
+            System.out.print(path.get(i) + " ");
+        }
+        System.out.println("");
+    }
