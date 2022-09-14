@@ -61,3 +61,15 @@ public class BinarySearchTress {
         }
         return root;
     }
+    
+     public static void inorderBST(NodeBST root)
+    {
+        if (root == null)
+        {
+            return;
+        }
+
+        inorderBST(root.left);
+        System.out.print(root.data  + " ");
+        inorderBST(root.right);
+    }
