@@ -40,3 +40,24 @@ public class BinarySearchTress {
             right = null;
         }
     }
+    
+    public static NodeBST insert(NodeBST root, int data) {
+        if (root==null)
+        {
+            root = new NodeBST(data);
+//            System.out.println("Inserted element : " + root.data);
+            return root;
+        }
+
+        if (root.data > data)
+        {
+//            System.out.println("Go to left");
+            root.left = insert(root.left , data);
+        }
+        else
+        {
+//            System.out.println("Go to right");
+            root.right = insert(root.right , data);
+        }
+        return root;
+    }
