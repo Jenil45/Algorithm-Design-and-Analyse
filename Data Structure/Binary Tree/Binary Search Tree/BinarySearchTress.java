@@ -96,3 +96,59 @@ public class BinarySearchTress {
             return searchBST(root.right , key);
         }
     }
+
+     /*
+        Three cases for Delete Node
+        (i) Leaf node                        delete and set as null to it
+        (ii) One child                       delete and replace with children
+        (iii) Two children                   delete and replace with inorder successor
+        inorder successor in BST is left most in right subtree
+        inorder successor always hve 0 or 1 child
+     */
+
+    public static NodeBST deleteNode(NodeBST root , int key)
+    {
+        if (root.data > key)
+        {
+            root.left = deleteNode(root.left , key);
+        }
+
+        else if (root.data < key)
+        {
+            root.right = deleteNode(root.right , key);
+        }
+        else
+        {
+            // root.data == key
+            // case 1 : leaf node delete
+            if (root.left == null && root.right == null)
+            {
+                return null;
+            }
+
+            // case 2 : one child
+            if (root.left == null)
+            {
+                return root.right;
+            }
+            else if (root.right == null)
+            {
+                return root.left;
+            }
+
+            // case 3 :
+            NodeBST inorderS = inorderSuccessor(root.right);
+            root.data = inorderS.data;
+            root.right = deleteNode(root.right ,inorderS.data);
+        }
+        return root;
+    }
+
+    public static NodeBST inorderSuccessor(NodeBST root)
+    {
+        while (root.left != null)
+        {
+            root = root.left;
+        }
+        return root;
+    }
