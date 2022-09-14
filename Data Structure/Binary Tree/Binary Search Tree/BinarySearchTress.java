@@ -73,3 +73,26 @@ public class BinarySearchTress {
         System.out.print(root.data  + " ");
         inorderBST(root.right);
     }
+    // search in bst
+    public static boolean searchBST(NodeBST root , int key)
+    {
+
+        if (root == null)
+        {
+            return false;
+        }
+        if (root.data == key)
+        {
+            return true;
+        }
+
+        else if (root.data > key)
+        {
+            return searchBST(root.left , key);
+        }
+
+        else
+        {
+            return searchBST(root.right , key);
+        }
+    }
